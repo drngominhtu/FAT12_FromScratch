@@ -1,0 +1,34 @@
+# Project: Mock_FAT12
+# Makefile created by Embarcadero Dev-C++ 6.3
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = handlefile.o readfat.o main.o
+LINKOBJ  = handlefile.o readfat.o main.o
+LIBS     = -L"C:/Users/admin/Dev-Cpp/TDM-GCC-64/lib" -L"C:/Users/admin/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/lib" -static-libgcc
+INCS     = -I"C:/Users/admin/Dev-Cpp/TDM-GCC-64/include" -I"C:/Users/admin/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/include" -I"C:/Users/admin/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include"
+CXXINCS  = -I"C:/Users/admin/Dev-Cpp/TDM-GCC-64/include" -I"C:/Users/admin/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/include" -I"C:/Users/admin/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include" -I"C:/Users/admin/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++"
+BIN      = Mock_FAT12.exe
+CXXFLAGS = $(CXXINCS) 
+CFLAGS   = $(INCS) 
+DEL      = C:\Users\admin\Dev-Cpp\DevCpp.exe INTERNAL_DEL
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${DEL} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+handlefile.o: handlefile.c
+	$(CC) -c handlefile.c -o handlefile.o $(CFLAGS)
+
+readfat.o: readfat.c
+	$(CC) -c readfat.c -o readfat.o $(CFLAGS)
+
+main.o: main.c
+	$(CC) -c main.c -o main.o $(CFLAGS)
